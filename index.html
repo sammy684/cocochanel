@@ -560,71 +560,71 @@
     <div class="tag-section" style="margin-top:16px;">
       <div class="tag-section-title">📍 地區類</div>
       <div class="tags">
-        <span class="tag selectable">縣市</span>
-        <span class="tag selectable">鄉鎮</span>
+        <span data-name="縣市" class="tag selectable">縣市</span>
+        <span data-name="鄉鎮" class="tag selectable">鄉鎮</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">💰 總價（非台北市）</div>
       <div class="tags">
-        <span class="tag selectable orange">1000萬以下</span>
-        <span class="tag selectable orange">1000–1500萬</span>
-        <span class="tag selectable orange">1500–2500萬</span>
-        <span class="tag selectable orange">2500萬以上</span>
+        <span data-name="1000萬以下" class="tag selectable orange">1000萬以下</span>
+        <span data-name="1000–1500萬" class="tag selectable orange">1000–1500萬</span>
+        <span data-name="1500–2500萬" class="tag selectable orange">1500–2500萬</span>
+        <span data-name="2500萬以上" class="tag selectable orange">2500萬以上</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">💰 總價（台北市）</div>
       <div class="tags">
-        <span class="tag selectable orange">2000萬以下</span>
-        <span class="tag selectable orange">2000–3000萬</span>
-        <span class="tag selectable orange">3000–4000萬</span>
-        <span class="tag selectable orange">4000萬以上</span>
+        <span data-name="2000萬以下" class="tag selectable orange">2000萬以下</span>
+        <span data-name="2000–3000萬" class="tag selectable orange">2000–3000萬</span>
+        <span data-name="3000–4000萬" class="tag selectable orange">3000–4000萬</span>
+        <span data-name="4000萬以上" class="tag selectable orange">4000萬以上</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">🏠 房型</div>
       <div class="tags">
-        <span class="tag selectable green">1房</span>
-        <span class="tag selectable green">2房</span>
-        <span class="tag selectable green">3房</span>
-        <span class="tag selectable green">4房</span>
-        <span class="tag selectable green">5房</span>
-        <span class="tag selectable green">套房</span>
-        <span class="tag selectable green">開放格局</span>
-        <span class="tag selectable green">店面</span>
-        <span class="tag selectable green">辦公室</span>
+        <span data-name="1房" class="tag selectable green">1房</span>
+        <span data-name="2房" class="tag selectable green">2房</span>
+        <span data-name="3房" class="tag selectable green">3房</span>
+        <span data-name="4房" class="tag selectable green">4房</span>
+        <span data-name="5房" class="tag selectable green">5房</span>
+        <span data-name="套房" class="tag selectable green">套房</span>
+        <span data-name="開放格局" class="tag selectable green">開放格局</span>
+        <span data-name="店面" class="tag selectable green">店面</span>
+        <span data-name="辦公室" class="tag selectable green">辦公室</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">📐 坪數</div>
       <div class="tags">
-        <span class="tag selectable">20坪以下</span>
-        <span class="tag selectable">20–30坪</span>
-        <span class="tag selectable">30–40坪</span>
-        <span class="tag selectable">40–50坪</span>
-        <span class="tag selectable">50–60坪</span>
-        <span class="tag selectable">60–70坪</span>
-        <span class="tag selectable">70–80坪</span>
-        <span class="tag selectable">80坪以上</span>
+        <span data-name="20坪以下" class="tag selectable">20坪以下</span>
+        <span data-name="20–30坪" class="tag selectable">20–30坪</span>
+        <span data-name="30–40坪" class="tag selectable">30–40坪</span>
+        <span data-name="40–50坪" class="tag selectable">40–50坪</span>
+        <span data-name="50–60坪" class="tag selectable">50–60坪</span>
+        <span data-name="60–70坪" class="tag selectable">60–70坪</span>
+        <span data-name="70–80坪" class="tag selectable">70–80坪</span>
+        <span data-name="80坪以上" class="tag selectable">80坪以上</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">🏗 形態</div>
       <div class="tags">
-        <span class="tag selectable">住宅大樓</span>
-        <span class="tag selectable">電梯大樓</span>
-        <span class="tag selectable">華廈</span>
-        <span class="tag selectable">別墅</span>
-        <span class="tag selectable">透天</span>
-        <span class="tag selectable">商辦大樓</span>
-        <span class="tag selectable">廠辦</span>
-        <span class="tag selectable">其他</span>
+        <span data-name="住宅大樓" class="tag selectable">住宅大樓</span>
+        <span data-name="電梯大樓" class="tag selectable">電梯大樓</span>
+        <span data-name="華廈" class="tag selectable">華廈</span>
+        <span data-name="別墅" class="tag selectable">別墅</span>
+        <span data-name="透天" class="tag selectable">透天</span>
+        <span data-name="商辦大樓" class="tag selectable">商辦大樓</span>
+        <span data-name="廠辦" class="tag selectable">廠辦</span>
+        <span data-name="其他" class="tag selectable">其他</span>
       </div>
     </div>
 
@@ -815,23 +815,14 @@ function clearTags() {
 }
 
 // ── Bind events ──
-(function() {
-  function bindTags() {
-    document.querySelectorAll('.tag.selectable').forEach(function(el) {
-      // Store name in data attribute to avoid any textContent issues
-      el.setAttribute('data-name', el.textContent.trim());
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleTag(this);
-      });
+window.onload = function() {
+  document.querySelectorAll('.tag.selectable').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      toggleTag(this);
     });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindTags);
-  } else {
-    bindTags();
-  }
-})();
+  });
+};
 </script>
 </body>
 </html>
