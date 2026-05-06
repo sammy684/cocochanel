@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>591 精準定向包｜公關版位招商</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1a73e8;
+    --blue-light: #e8f0fe;
+    --blue-mid: #4a90d9;
+    --orange: #f4a020;
+    --orange-light: #fff4e0;
+    --green: #27ae60;
+    --green-light: #eafaf1;
+    --red: #e74c3c;
+    --red-light: #fdecea;
+    --dark: #1a1a2e;
+    --gray: #5f6368;
+    --light: #f8f9fa;
+    --white: #ffffff;
+    --border: #e0e0e0;
+    --shadow: 0 4px 20px rgba(26,115,232,0.10);
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: #f0f4ff;
+    color: var(--dark);
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+    color: white;
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 100px;
+    padding: 6px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 6vw, 38px);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .hero h1 span {
+    color: #ffd54f;
+  }
+  .hero-sub {
+    font-size: 15px;
+    opacity: 0.85;
+    margin-bottom: 28px;
+  }
+
+  .hero-dates {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .date-card {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 12px;
+    padding: 12px 18px;
+    min-width: 140px;
+    text-align: center;
+  }
+  .date-card .label {
+    font-size: 11px;
+    opacity: 0.75;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .date-card .date {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 28px 24px;
+    margin: 20px 0;
+  }
+  .card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 18px;
+  }
+  .card-title .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .icon-blue { background: var(--blue-light); }
+  .icon-orange { background: var(--orange-light); }
+  .icon-green { background: var(--green-light); }
+
+  /* ── STEPS ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+  }
+  .step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 15px; top: 36px;
+    width: 2px;
+    height: calc(100% - 20px);
+    background: #dce8ff;
+  }
+  .step-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-body {
+    padding-bottom: 24px;
+    flex: 1;
+  }
+  .step-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+  .step-date {
+    display: inline-block;
+    background: var(--orange-light);
+    color: #c07000;
+    border-radius: 8px;
+    padding: 3px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .step-desc {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  .step-desc strong { color: var(--red); }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight {
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 14px;
+    margin: 12px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .highlight-blue { background: var(--blue-light); color: #174ea6; }
+  .highlight-orange { background: var(--orange-light); color: #7a4800; }
+  .highlight-green { background: var(--green-light); color: #145a32; }
+  .highlight-red { background: var(--red-light); color: #922b21; }
+  .highlight .hi-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .highlight .hi-text { line-height: 1.6; }
+  .highlight .hi-text strong { font-weight: 700; }
+
+  /* ── SPECS GRID ── */
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 420px) {
+    .spec-grid { grid-template-columns: 1fr; }
+  }
+  .spec-item {
+    background: var(--light);
+    border-radius: 10px;
+    padding: 12px 14px;
+    border-left: 3px solid var(--blue);
+  }
+  .spec-item .spec-label {
+    font-size: 11px;
+    color: var(--gray);
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+  .spec-item .spec-val {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+  .spec-item.full { grid-column: span 2; }
+  @media (max-width: 420px) {
+    .spec-item.full { grid-column: span 1; }
+  }
+  .spec-note {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #f1f3f4;
+    border-radius: 8px;
+  }
+
+  /* ── TAG CLOUD ── */
+  .tag-section { margin-bottom: 16px; }
+  .tag-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    background: var(--blue-light);
+    color: var(--blue);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .tag.orange { background: var(--orange-light); color: #b35900; }
+  .tag.green { background: var(--green-light); color: #1a7a45; }
+
+  /* ── COMPARISON TABLE ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 4px;
+  }
+  .compare-table th {
+    background: var(--blue);
+    color: white;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .compare-table th:first-child { border-radius: 10px 0 0 0; }
+  .compare-table th:last-child { border-radius: 0 10px 0 0; }
+  .compare-table td {
+    padding: 10px 14px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td:first-child {
+    font-weight: 600;
+    color: var(--blue);
+    width: 80px;
+    background: var(--blue-light);
+  }
+  .compare-table td:nth-child(2) {
+    background: #fff;
+    color: var(--dark);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 13px;
+    margin-top: 32px;
+  }
+  .footer strong { color: white; }
+
+  /* ── SECTION SEPARATOR ── */
+  .sep {
+    text-align: center;
+    padding: 24px 0 8px;
+    font-size: 11px;
+    color: #aaa;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .card { animation: fadeUp 0.4s ease both; }
+  .card:nth-child(2) { animation-delay: 0.05s; }
+  .card:nth-child(3) { animation-delay: 0.10s; }
+  .card:nth-child(4) { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🎯 591 功能測試招商 · 歡迎體驗</div>
+  <h1>精準定向包<br><span>公關版位招商</span></h1>
+  <p class="hero-sub">從「人找房」進化為「房找人」<br>讓廣告主動找到最適合的潛在買家</p>
+
+  <div class="hero-dates">
+    <div class="date-card">
+      <div class="label">📋 同意書回覆</div>
+      <div class="date">5/15（五）</div>
+    </div>
+    <div class="date-card">
+      <div class="label">🖼 素材繳交</div>
+      <div class="date">5/20（五）</div>
+    </div>
+    <div class="date-card">
+      <div class="label">🚀 投放期間</div>
+      <div class="date">5/25 – 6/23</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <!-- 什麼是精準版位 -->
+  <div class="card">
+    <div class="card-title">
+      <div class="icon icon-blue">🎯</div>
+      什麼是精準版位？
+    </div>
+    <div class="highlight highlight-blue">
+      <div class="hi-icon">💡</div>
+      <div class="hi-text">
+        傳統廣告是「固定位置曝光給所有人」；精準版位是根據<strong>使用者的瀏覽行為</strong>，把廣告展示給<strong>最有可能購買的人</strong>。
+      </div>
+    </div>
+
+    <table class="compare-table" style="margin-top:16px;">
+      <tr>
+        <th>項目</th>
+        <th>⚡ 精準版位（本次測試）</th>
+      </tr>
+      <tr>
+        <td>曝光位置</td>
+        <td>覆蓋全站所有版位</td>
+      </tr>
+      <tr>
+        <td>展示邏輯</td>
+        <td>智能投放，符合標籤才顯示</td>
+      </tr>
+      <tr>
+        <td>目標人群</td>
+        <td>六大標籤 + 行為匹配</td>
+      </tr>
+      <tr>
+        <td>模式</td>
+        <td>房找人（主動觸及潛在客戶）</td>
+      </tr>
+      <tr>
+        <td>效果</td>
+        <td>增量觸達，精準轉化</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 參加流程 -->
+  <div class="card">
+    <div class="card-title">
+      <div class="icon icon-orange">📅</div>
+      參加流程 &amp; 重要時間節點
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">確認參加意願</div>
+          <div class="step-date">⏰ 截止 5/15（五）</div>
+          <div class="step-desc">請回覆<strong>「同意」</strong>信件，所有客戶統一一起回覆，勿單獨回覆。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">準備並繳交素材</div>
+          <div class="step-date">⏰ 截止 5/20（五）</div>
+          <div class="step-desc">共需準備 <strong>10 組素材</strong>，規格詳見下方說明。格式 JPG / PNG，每檔 &lt; 300K。</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">591 上線投放</div>
+          <div class="step-date">📆 2026/5/25 – 6/23</div>
+          <div class="step-desc">交付週期約 <strong>30 天</strong>。實際以 591 交付時間為準，可能有所調整。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight highlight-red">
+      <div class="hi-icon">⚠️</div>
+      <div class="hi-text"><strong>特別提醒：</strong>同意書須在 5/15 前回覆，逾期視同放棄本次公關資格。</div>
+    </div>
+  </div>
+
+  <!-- 素材規格 -->
+  <div class="card">
+    <div class="card-title">
+      <div class="icon icon-blue">🖼</div>
+      素材規格（共 10 組）
+    </div>
+
+    <div class="spec-grid">
+      <div class="spec-item">
+        <div class="spec-label">版位 1（手機全版）</div>
+        <div class="spec-val">1125 × 2435 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">版位 2</div>
+        <div class="spec-val">635 × 325 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">版位 3</div>
+        <div class="spec-val">690 × 290 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">版位 4（橫幅）</div>
+        <div class="spec-val">660 × 110 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">版位 5</div>
+        <div class="spec-val">690 × 200 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">版位 6（電腦大圖）</div>
+        <div class="spec-val">1920 × 470 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">版位 7</div>
+        <div class="spec-val">1200 × 90 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">版位 8</div>
+        <div class="spec-val">1200 × 70 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">版位 9</div>
+        <div class="spec-val">1200 × 250 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">版位 10（方形）</div>
+        <div class="spec-val">498 × 498 px</div>
+      </div>
+    </div>
+
+    <div class="spec-note">
+      📎 格式：JPG 或 PNG｜每個檔案 &lt; 300K<br>
+      📌 版位1 注意：頂部保留 1125×390 px、底部保留 1125×540 px 安全區域<br>
+      📌 版位4 注意：左右各保留 45×110 px 安全區域
+    </div>
+  </div>
+
+  <!-- 可選標籤 -->
+  <div class="card">
+    <div class="card-title">
+      <div class="icon icon-green">🏷</div>
+      可選精準標籤
+    </div>
+
+    <div class="highlight highlight-green">
+      <div class="hi-icon">✅</div>
+      <div class="hi-text">六大標籤皆可選，<strong>不限數量，支援全選</strong>。標籤越精準，廣告觸及越有效。</div>
+    </div>
+
+    <div class="tag-section" style="margin-top:16px;">
+      <div class="tag-section-title">📍 地區類</div>
+      <div class="tags">
+        <span class="tag">縣市</span>
+        <span class="tag">鄉鎮</span>
+      </div>
+    </div>
+
+    <div class="tag-section">
+      <div class="tag-section-title">💰 總價（非台北市）</div>
+      <div class="tags">
+        <span class="tag orange">1000萬以下</span>
+        <span class="tag orange">1000–1500萬</span>
+        <span class="tag orange">1500–2500萬</span>
+        <span class="tag orange">2500萬以上</span>
+      </div>
+    </div>
+
+    <div class="tag-section">
+      <div class="tag-section-title">💰 總價（台北市）</div>
+      <div class="tags">
+        <span class="tag orange">2000萬以下</span>
+        <span class="tag orange">2000–3000萬</span>
+        <span class="tag orange">3000–4000萬</span>
+        <span class="tag orange">4000萬以上</span>
+      </div>
+    </div>
+
+    <div class="tag-section">
+      <div class="tag-section-title">🏠 房型</div>
+      <div class="tags">
+        <span class="tag green">1房</span>
+        <span class="tag green">2房</span>
+        <span class="tag green">3房</span>
+        <span class="tag green">4房</span>
+        <span class="tag green">5房</span>
+        <span class="tag green">套房</span>
+        <span class="tag green">開放格局</span>
+        <span class="tag green">店面</span>
+        <span class="tag green">辦公室</span>
+      </div>
+    </div>
+
+    <div class="tag-section">
+      <div class="tag-section-title">📐 坪數</div>
+      <div class="tags">
+        <span class="tag">20坪以下</span>
+        <span class="tag">20–30坪</span>
+        <span class="tag">30–40坪</span>
+        <span class="tag">40–50坪</span>
+        <span class="tag">50–60坪</span>
+        <span class="tag">60–70坪</span>
+        <span class="tag">70–80坪</span>
+        <span class="tag">80坪以上</span>
+      </div>
+    </div>
+
+    <div class="tag-section">
+      <div class="tag-section-title">🏗 形態</div>
+      <div class="tags">
+        <span class="tag">住宅大樓</span>
+        <span class="tag">電梯大樓</span>
+        <span class="tag">華廈</span>
+        <span class="tag">別墅</span>
+        <span class="tag">透天</span>
+        <span class="tag">商辦大樓</span>
+        <span class="tag">廠辦</span>
+        <span class="tag">其他</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 重點整理 -->
+  <div class="card">
+    <div class="card-title">
+      <div class="icon icon-orange">📌</div>
+      重點整理
+    </div>
+    <div class="highlight highlight-blue">
+      <div class="hi-icon">1️⃣</div>
+      <div class="hi-text"><strong>5/15 前</strong>回覆「同意」信件參加</div>
+    </div>
+    <div class="highlight highlight-orange">
+      <div class="hi-icon">2️⃣</div>
+      <div class="hi-text"><strong>5/20 前</strong>準備好 10 組素材（JPG/PNG &lt; 300K）</div>
+    </div>
+    <div class="highlight highlight-green">
+      <div class="hi-icon">3️⃣</div>
+      <div class="hi-text"><strong>5/25 起</strong>廣告上線，投放約 30 天</div>
+    </div>
+    <div class="highlight highlight-blue">
+      <div class="hi-icon">4️⃣</div>
+      <div class="hi-text">選定<strong>精準標籤</strong>，讓廣告找到最有意願的買家</div>
+    </div>
+  </div>
+
+</div><!-- end section -->
+
+<div class="footer">
+  <strong>591 廣告 · 就是比較準！</strong><br>
+  本頁為公關測試期間說明文件，實際投放細節以 591 官方確認為準。
+</div>
+
+</body>
+</html>
