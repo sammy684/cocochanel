@@ -1,8 +1,23 @@
 // ── 素材規格複製 ──
 function copySpecs() {
   var text = "素材規格\n１．1125 x 2435 像素(頂部預留1125 * 390像素底部預留1125 * 540像素)；\n２．635 x 325 像素\n３．690 x 290 像素\n４．660 x 110 像素(左右各預留45 x 110 像素)\n５．690 x 200像素\n６．1920 x 470 像素\n７．1200 x 90 像素\n８．1200 x 70 像素\n９．1200 x 250 像素\n１０．498 x 498 像素\nJPG/PNG<300K";
-  var btn = document.getElementById('copyBtn');
+  var btn = document.querySelector('[data-action="copySpecs"]');
   doCopy(text, btn, '📋 複製素材規格文字');
+}
+
+// ── 展開／收合地區清單 ──
+function toggleArea(listId) {
+  var list = document.getElementById(listId);
+  var arrowId = listId === 'city-list' ? 'city-arrow' : 'district-arrow';
+  var arrow = document.getElementById(arrowId);
+  if (!list || !arrow) return;
+  if (list.classList.contains('open')) {
+    list.classList.remove('open');
+    arrow.classList.remove('open');
+  } else {
+    list.classList.add('open');
+    arrow.classList.add('open');
+  }
 }
 
 // ── 標籤選取 ──
@@ -42,7 +57,7 @@ function copyTags() {
     return;
   }
   var text = '精準標籤：' + selectedTags.join('、');
-  var btn = document.getElementById('copyTagBtn');
+  var btn = document.querySelector('[data-action="copyTags"]');
   doCopy(text, btn, '📋 複製已選標籤');
 }
 
@@ -86,6 +101,7 @@ function legacyCopy(text, btn, originalLabel) {
 }
 
 function showCopied(btn, originalLabel) {
+  if (!btn) return;
   btn.textContent = '✅ 已複製！';
   btn.classList.add('copied');
   setTimeout(function() {
@@ -94,11 +110,32 @@ function showCopied(btn, originalLabel) {
   }, 2500);
 }
 
-// ── 綁定標籤點擊事件 ──
+// ── 綁定所有事件（頁面載入後）──
 window.onload = function() {
+
+  // 展開縣市 / 鄉鎮
+  document.querySelectorAll('.area-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var target = this.getAttribute('data-target');
+      toggleArea(target);
+    });
+  });
+
+  // 標籤點選
   document.querySelectorAll('.tag.selectable').forEach(function(el) {
     el.addEventListener('click', function() {
       toggleTag(this);
     });
   });
+
+  // 按鈕
+  document.querySelectorAll('[data-action]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var action = this.getAttribute('data-action');
+      if (action === 'copySpecs') copySpecs();
+      if (action === 'copyTags') copyTags();
+      if (action === 'clearTags') clearTags();
+    });
+  });
+
 };
