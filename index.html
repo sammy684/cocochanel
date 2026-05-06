@@ -287,6 +287,10 @@
   }
   .tag.orange { background: var(--orange-light); color: #b35900; }
   .tag.green { background: var(--green-light); color: #1a7a45; }
+  .tag.selectable { cursor: pointer; border: 2px solid transparent; transition: all 0.15s; user-select: none; }
+  .tag.selectable:hover { opacity: 0.8; }
+  .tag.selectable.selected { border-color: currentColor; box-shadow: 0 0 0 2px rgba(26,115,232,0.25); font-weight: 700; position: relative; }
+  .tag.selectable.selected::after { content: ' ✓'; font-size: 11px; }
 
   /* ── COMPARISON TABLE ── */
   .compare-table {
@@ -550,79 +554,94 @@
     </div>
 
     <div class="highlight highlight-green">
-      <div class="hi-icon">✅</div>
-      <div class="hi-text">六大標籤皆可選，<strong>不限數量，支援全選</strong>。標籤越精準，廣告觸及越有效。</div>
+      <div class="hi-icon">👆</div>
+      <div class="hi-text">點選標籤即可勾選，再次點選取消。選好後按下方按鈕複製。<strong>不限數量，支援全選。</strong></div>
     </div>
 
     <div class="tag-section" style="margin-top:16px;">
       <div class="tag-section-title">📍 地區類</div>
       <div class="tags">
-        <span class="tag">縣市</span>
-        <span class="tag">鄉鎮</span>
+        <span class="tag selectable" onclick="toggleTag(this)">縣市</span>
+        <span class="tag selectable" onclick="toggleTag(this)">鄉鎮</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">💰 總價（非台北市）</div>
       <div class="tags">
-        <span class="tag orange">1000萬以下</span>
-        <span class="tag orange">1000–1500萬</span>
-        <span class="tag orange">1500–2500萬</span>
-        <span class="tag orange">2500萬以上</span>
+        <span class="tag selectable orange" onclick="toggleTag(this)">1000萬以下</span>
+        <span class="tag selectable orange" onclick="toggleTag(this)">1000–1500萬</span>
+        <span class="tag selectable orange" onclick="toggleTag(this)">1500–2500萬</span>
+        <span class="tag selectable orange" onclick="toggleTag(this)">2500萬以上</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">💰 總價（台北市）</div>
       <div class="tags">
-        <span class="tag orange">2000萬以下</span>
-        <span class="tag orange">2000–3000萬</span>
-        <span class="tag orange">3000–4000萬</span>
-        <span class="tag orange">4000萬以上</span>
+        <span class="tag selectable orange" onclick="toggleTag(this)">2000萬以下</span>
+        <span class="tag selectable orange" onclick="toggleTag(this)">2000–3000萬</span>
+        <span class="tag selectable orange" onclick="toggleTag(this)">3000–4000萬</span>
+        <span class="tag selectable orange" onclick="toggleTag(this)">4000萬以上</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">🏠 房型</div>
       <div class="tags">
-        <span class="tag green">1房</span>
-        <span class="tag green">2房</span>
-        <span class="tag green">3房</span>
-        <span class="tag green">4房</span>
-        <span class="tag green">5房</span>
-        <span class="tag green">套房</span>
-        <span class="tag green">開放格局</span>
-        <span class="tag green">店面</span>
-        <span class="tag green">辦公室</span>
+        <span class="tag selectable green" onclick="toggleTag(this)">1房</span>
+        <span class="tag selectable green" onclick="toggleTag(this)">2房</span>
+        <span class="tag selectable green" onclick="toggleTag(this)">3房</span>
+        <span class="tag selectable green" onclick="toggleTag(this)">4房</span>
+        <span class="tag selectable green" onclick="toggleTag(this)">5房</span>
+        <span class="tag selectable green" onclick="toggleTag(this)">套房</span>
+        <span class="tag selectable green" onclick="toggleTag(this)">開放格局</span>
+        <span class="tag selectable green" onclick="toggleTag(this)">店面</span>
+        <span class="tag selectable green" onclick="toggleTag(this)">辦公室</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">📐 坪數</div>
       <div class="tags">
-        <span class="tag">20坪以下</span>
-        <span class="tag">20–30坪</span>
-        <span class="tag">30–40坪</span>
-        <span class="tag">40–50坪</span>
-        <span class="tag">50–60坪</span>
-        <span class="tag">60–70坪</span>
-        <span class="tag">70–80坪</span>
-        <span class="tag">80坪以上</span>
+        <span class="tag selectable" onclick="toggleTag(this)">20坪以下</span>
+        <span class="tag selectable" onclick="toggleTag(this)">20–30坪</span>
+        <span class="tag selectable" onclick="toggleTag(this)">30–40坪</span>
+        <span class="tag selectable" onclick="toggleTag(this)">40–50坪</span>
+        <span class="tag selectable" onclick="toggleTag(this)">50–60坪</span>
+        <span class="tag selectable" onclick="toggleTag(this)">60–70坪</span>
+        <span class="tag selectable" onclick="toggleTag(this)">70–80坪</span>
+        <span class="tag selectable" onclick="toggleTag(this)">80坪以上</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">🏗 形態</div>
       <div class="tags">
-        <span class="tag">住宅大樓</span>
-        <span class="tag">電梯大樓</span>
-        <span class="tag">華廈</span>
-        <span class="tag">別墅</span>
-        <span class="tag">透天</span>
-        <span class="tag">商辦大樓</span>
-        <span class="tag">廠辦</span>
-        <span class="tag">其他</span>
+        <span class="tag selectable" onclick="toggleTag(this)">住宅大樓</span>
+        <span class="tag selectable" onclick="toggleTag(this)">電梯大樓</span>
+        <span class="tag selectable" onclick="toggleTag(this)">華廈</span>
+        <span class="tag selectable" onclick="toggleTag(this)">別墅</span>
+        <span class="tag selectable" onclick="toggleTag(this)">透天</span>
+        <span class="tag selectable" onclick="toggleTag(this)">商辦大樓</span>
+        <span class="tag selectable" onclick="toggleTag(this)">廠辦</span>
+        <span class="tag selectable" onclick="toggleTag(this)">其他</span>
       </div>
+    </div>
+
+    <!-- 已選預覽 -->
+    <div id="selectedPreview" style="display:none; margin-top:20px;">
+      <div style="font-size:13px; font-weight:700; color:var(--gray); margin-bottom:8px;">✅ 已選標籤：</div>
+      <div id="selectedList" style="background:var(--light); border-radius:10px; padding:12px 14px; font-size:14px; color:var(--dark); line-height:1.9; border:1px solid var(--border); word-break:break-all;"></div>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+      <button class="copy-btn" style="flex:1; min-width:140px; margin-top:0;" onclick="copyTags()" id="copyTagBtn">
+        📋 複製已選標籤
+      </button>
+      <button class="copy-btn" style="flex:1; min-width:100px; margin-top:0; background:#e74c3c;" onclick="clearTags()">
+        🗑 清除全部
+      </button>
     </div>
   </div>
 
@@ -709,13 +728,80 @@ function fallbackCopy(text, btn) {
   document.body.removeChild(textarea);
 }
 
-function showCopied(btn) {
+function showCopied(btn, originalText) {
   btn.textContent = '✅ 已複製！';
   btn.classList.add('copied');
   setTimeout(function() {
-    btn.textContent = '📋 複製素材規格文字';
+    btn.textContent = originalText;
     btn.classList.remove('copied');
   }, 2500);
+}
+
+// ── TAG SELECTOR ──
+function toggleTag(el) {
+  el.classList.toggle('selected');
+  updatePreview();
+}
+
+function updatePreview() {
+  var selected = document.querySelectorAll('.tag.selectable.selected');
+  var preview = document.getElementById('selectedPreview');
+  var list = document.getElementById('selectedList');
+  if (selected.length === 0) {
+    preview.style.display = 'none';
+    return;
+  }
+  preview.style.display = 'block';
+  var names = [];
+  selected.forEach(function(el) {
+    names.push(el.textContent.replace(' ✓','').trim());
+  });
+  list.textContent = names.join('、');
+}
+
+function copyTags() {
+  var selected = document.querySelectorAll('.tag.selectable.selected');
+  if (selected.length === 0) {
+    alert('請先點選要複製的標籤！');
+    return;
+  }
+  var names = [];
+  selected.forEach(function(el) {
+    names.push(el.textContent.replace(' ✓','').trim());
+  });
+  var text = '精準標籤：' + names.join('、');
+  var btn = document.getElementById('copyTagBtn');
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function() {
+      showCopied(btn, '📋 複製已選標籤');
+    }).catch(function() { fallbackCopyText(text, btn); });
+  } else {
+    fallbackCopyText(text, btn);
+  }
+}
+
+function fallbackCopyText(text, btn) {
+  var textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  try {
+    document.execCommand('copy');
+    showCopied(btn, '📋 複製已選標籤');
+  } catch(e) {
+    alert('複製失敗，請手動複製。');
+  }
+  document.body.removeChild(textarea);
+}
+
+function clearTags() {
+  document.querySelectorAll('.tag.selectable.selected').forEach(function(el) {
+    el.classList.remove('selected');
+  });
+  updatePreview();
 }
 </script>
 </body>
