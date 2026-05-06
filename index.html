@@ -896,50 +896,71 @@ function showCopied(btn, originalLabel) {
 }
 
 // ── 綁定所有事件（頁面載入後）──
-window.onload = function() {
-
+// Script is at bottom of body, DOM is already ready - bind directly
+(function init() {
   // 展開縣市 / 鄉鎮
-  document.querySelectorAll('.area-header').forEach(function(header) {
-    header.addEventListener('click', function() {
-      var target = this.getAttribute('data-target');
-      toggleArea(target);
-    });
-  });
+  var areaHeaders = document.querySelectorAll('.area-header');
+  for (var i = 0; i < areaHeaders.length; i++) {
+    (function(header) {
+      header.addEventListener('click', function() {
+        var target = header.getAttribute('data-target');
+        var list = document.getElementById(target);
+        var arrowId = target === 'city-list' ? 'city-arrow' : 'district-arrow';
+        var arrow = document.getElementById(arrowId);
+        if (!list) return;
+        if (list.classList.contains('open')) {
+          list.classList.remove('open');
+          if (arrow) arrow.classList.remove('open');
+        } else {
+          list.classList.add('open');
+          if (arrow) arrow.classList.add('open');
+        }
+      });
+    })(areaHeaders[i]);
+  }
 
   // 展開各城市行政區
-  document.querySelectorAll('.district-city-label').forEach(function(label) {
-    label.addEventListener('click', function() {
-      var cityId = this.getAttribute('data-city');
-      var tags = document.getElementById(cityId);
-      if (!tags) return;
-      if (tags.classList.contains('open')) {
-        tags.classList.remove('open');
-        this.classList.remove('open');
-      } else {
-        tags.classList.add('open');
-        this.classList.add('open');
-      }
-    });
-  });
+  var cityLabels = document.querySelectorAll('.district-city-label');
+  for (var j = 0; j < cityLabels.length; j++) {
+    (function(label) {
+      label.addEventListener('click', function() {
+        var cityId = label.getAttribute('data-city');
+        var tags = document.getElementById(cityId);
+        if (!tags) return;
+        if (tags.classList.contains('open')) {
+          tags.classList.remove('open');
+          label.classList.remove('open');
+        } else {
+          tags.classList.add('open');
+          label.classList.add('open');
+        }
+      });
+    })(cityLabels[j]);
+  }
 
   // 標籤點選
-  document.querySelectorAll('.tag.selectable').forEach(function(el) {
-    el.addEventListener('click', function() {
-      toggleTag(this);
-    });
-  });
+  var selTags = document.querySelectorAll('.tag.selectable');
+  for (var k = 0; k < selTags.length; k++) {
+    (function(el) {
+      el.addEventListener('click', function() {
+        toggleTag(el);
+      });
+    })(selTags[k]);
+  }
 
   // 按鈕
-  document.querySelectorAll('[data-action]').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var action = this.getAttribute('data-action');
-      if (action === 'copySpecs') copySpecs();
-      if (action === 'copyTags') copyTags();
-      if (action === 'clearTags') clearTags();
-    });
-  });
-
-};
+  var btns = document.querySelectorAll('[data-action]');
+  for (var b = 0; b < btns.length; b++) {
+    (function(btn) {
+      btn.addEventListener('click', function() {
+        var action = btn.getAttribute('data-action');
+        if (action === 'copySpecs') copySpecs();
+        if (action === 'copyTags') copyTags();
+        if (action === 'clearTags') clearTags();
+      });
+    })(btns[b]);
+  }
+})();
 
 </script>
 </body>
