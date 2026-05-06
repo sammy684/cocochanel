@@ -287,10 +287,9 @@
   }
   .tag.orange { background: var(--orange-light); color: #b35900; }
   .tag.green { background: var(--green-light); color: #1a7a45; }
-  .tag.selectable { cursor: pointer; border: 2px solid transparent; transition: all 0.15s; user-select: none; }
-  .tag.selectable:hover { opacity: 0.8; }
-  .tag.selectable.selected { border-color: currentColor; box-shadow: 0 0 0 2px rgba(26,115,232,0.25); font-weight: 700; position: relative; }
-  .tag.selectable.selected::after { content: ' ✓'; font-size: 11px; }
+  .tag.selectable { cursor: pointer; border: 2px solid transparent; transition: all 0.15s; user-select: none; -webkit-user-select: none; }
+  .tag.selectable:active { opacity: 0.7; }
+  .tag.selectable.selected { border-color: currentColor; box-shadow: 0 0 0 2px rgba(26,115,232,0.25); font-weight: 700; }
 
   /* ── COMPARISON TABLE ── */
   .compare-table {
@@ -738,80 +737,101 @@ function showCopied(btn, originalText) {
 }
 
 // ── TAG SELECTOR ──
+// Store selected tag names in an array
+var selectedTags = [];
+
 function toggleTag(el) {
-  el.classList.toggle('selected');
+  var name = el.getAttribute('data-name');
+  var idx = selectedTags.indexOf(name);
+  if (idx === -1) {
+    // Add
+    selectedTags.push(name);
+    el.style.fontWeight = '700';
+    el.style.outline = '2px solid currentColor';
+    el.style.outlineOffset = '1px';
+    el.setAttribute('data-selected', '1');
+  } else {
+    // Remove
+    selectedTags.splice(idx, 1);
+    el.style.fontWeight = '';
+    el.style.outline = '';
+    el.style.outlineOffset = '';
+    el.removeAttribute('data-selected');
+  }
   updatePreview();
 }
 
 function updatePreview() {
-  var selected = document.querySelectorAll('.tag.selectable.selected');
   var preview = document.getElementById('selectedPreview');
   var list = document.getElementById('selectedList');
-  if (selected.length === 0) {
+  if (selectedTags.length === 0) {
     preview.style.display = 'none';
-    return;
+  } else {
+    preview.style.display = 'block';
+    list.textContent = selectedTags.join('、');
   }
-  preview.style.display = 'block';
-  var names = [];
-  selected.forEach(function(el) {
-    names.push(el.textContent.replace(' ✓','').trim());
-  });
-  list.textContent = names.join('、');
 }
 
 function copyTags() {
-  var selected = document.querySelectorAll('.tag.selectable.selected');
-  if (selected.length === 0) {
+  if (selectedTags.length === 0) {
     alert('請先點選要複製的標籤！');
     return;
   }
-  var names = [];
-  selected.forEach(function(el) {
-    names.push(el.textContent.replace(' ✓','').trim());
-  });
-  var text = '精準標籤：' + names.join('、');
+  var text = '精準標籤：' + selectedTags.join('、');
   var btn = document.getElementById('copyTagBtn');
+  doCopy(text, btn, '📋 複製已選標籤');
+}
+
+function doCopy(text, btn, originalLabel) {
   if (navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(text).then(function() {
-      showCopied(btn, '📋 複製已選標籤');
-    }).catch(function() { fallbackCopyText(text, btn); });
+      showCopied(btn, originalLabel);
+    }).catch(function() { legacyCopy(text, btn, originalLabel); });
   } else {
-    fallbackCopyText(text, btn);
+    legacyCopy(text, btn, originalLabel);
   }
 }
 
-function fallbackCopyText(text, btn) {
-  var textarea = document.createElement('textarea');
-  textarea.value = text;
-  textarea.style.position = 'fixed';
-  textarea.style.opacity = '0';
-  document.body.appendChild(textarea);
-  textarea.focus();
-  textarea.select();
-  try {
-    document.execCommand('copy');
-    showCopied(btn, '📋 複製已選標籤');
-  } catch(e) {
-    alert('複製失敗，請手動複製。');
-  }
-  document.body.removeChild(textarea);
+function legacyCopy(text, btn, originalLabel) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { document.execCommand('copy'); showCopied(btn, originalLabel); }
+  catch(e) { alert('複製失敗，請手動複製：\n' + text); }
+  document.body.removeChild(ta);
 }
 
 function clearTags() {
-  document.querySelectorAll('.tag.selectable.selected').forEach(function(el) {
-    el.classList.remove('selected');
+  selectedTags = [];
+  document.querySelectorAll('.tag.selectable').forEach(function(el) {
+    el.style.fontWeight = '';
+    el.style.outline = '';
+    el.style.outlineOffset = '';
+    el.removeAttribute('data-selected');
   });
   updatePreview();
 }
 
-// ── Bind tag click events after DOM is ready ──
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.tag.selectable').forEach(function(el) {
-    el.addEventListener('click', function() {
-      toggleTag(this);
+// ── Bind events ──
+(function() {
+  function bindTags() {
+    document.querySelectorAll('.tag.selectable').forEach(function(el) {
+      // Store name in data attribute to avoid any textContent issues
+      el.setAttribute('data-name', el.textContent.trim());
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleTag(this);
+      });
     });
-  });
-});
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bindTags);
+  } else {
+    bindTags();
+  }
+})();
 </script>
 </body>
 </html>
