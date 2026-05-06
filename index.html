@@ -343,6 +343,25 @@
     text-transform: uppercase;
   }
 
+  .copy-btn {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 14px;
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Noto Sans TC', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .copy-btn:hover { background: #1558c0; }
+  .copy-btn:active { transform: scale(0.98); }
+  .copy-btn.copied { background: var(--green); }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -517,6 +536,10 @@
       📌 版位1 注意：頂部保留 1125×390 px、底部保留 1125×540 px 安全區域<br>
       📌 版位4 注意：左右各保留 45×110 px 安全區域
     </div>
+
+    <button class="copy-btn" onclick="copySpecs()" id="copyBtn">
+      📋 複製素材規格文字
+    </button>
   </div>
 
   <!-- 可選標籤 -->
@@ -634,5 +657,56 @@
   本頁為公關測試期間說明文件，實際投放細節以 591 官方確認為準。
 </div>
 
+<script>
+function copySpecs() {
+  const text = "素材規格\n１．1125 x 2435 像素(頂部預留1125 * 390像素底部預留1125 * 540像素)；\n２．635 x 325 像素\n３．690 x 290 像素\n４．660 x 110 像素(左右各預留45 x 110 像素)\n５．690 x 200像素\n６．1920 x 470 像素\n７．1200 x 90 像素\n８．1200 x 70 像素\n９．1200 x 250 像素\n１０．498 x 498 像素\nJPG/PNG<300K";
+
+  var btn = document.getElementById('copyBtn');
+
+  // 方法一：新版 clipboard API
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function() {
+      showCopied(btn);
+    }).catch(function() {
+      fallbackCopy(text, btn);
+    });
+  } else {
+    // 方法二：舊版相容方式
+    fallbackCopy(text, btn);
+  }
+}
+
+function fallbackCopy(text, btn) {
+  var textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.top = '0';
+  textarea.style.left = '0';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  try {
+    var success = document.execCommand('copy');
+    if (success) {
+      showCopied(btn);
+    } else {
+      alert('複製失敗，請手動複製。');
+    }
+  } catch(e) {
+    alert('複製失敗，請手動複製。');
+  }
+  document.body.removeChild(textarea);
+}
+
+function showCopied(btn) {
+  btn.textContent = '✅ 已複製！';
+  btn.classList.add('copied');
+  setTimeout(function() {
+    btn.textContent = '📋 複製素材規格文字';
+    btn.classList.remove('copied');
+  }, 2500);
+}
+</script>
 </body>
 </html>
