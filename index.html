@@ -305,11 +305,17 @@
   .area-list { display: none; padding: 14px; border-top: 1px solid var(--border); }
   .area-list.open { display: block; }
   .district-city-label {
-    font-size: 12px; font-weight: 700; color: var(--blue);
-    margin: 12px 0 6px; padding-left: 4px;
+    font-size: 13px; font-weight: 700; color: var(--blue);
+    margin: 10px 0 0; padding: 8px 12px;
+    background: var(--blue-light); border-radius: 8px;
+    cursor: pointer; user-select: none; -webkit-user-select: none;
+    display: flex; align-items: center; gap: 6px;
   }
   .district-city-label:first-child { margin-top: 0; }
-  .district-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .district-city-label .d-arrow { font-size: 10px; transition: transform 0.2s; display: inline-block; }
+  .district-city-label.open .d-arrow { transform: rotate(90deg); }
+  .district-tags { display: none; flex-wrap: wrap; gap: 6px; padding: 8px 4px 4px; }
+  .district-tags.open { display: flex; }
   .tag.green { background: var(--green-light); color: #1a7a45; }
   .tag.selectable { cursor: pointer; border: 2px solid transparent; transition: all 0.15s; user-select: none; -webkit-user-select: none; }
   .tag.selectable:active { opacity: 0.7; }
@@ -611,43 +617,43 @@
         </div>
         <div class="area-list" id="district-list">
 
-          <div class="district-city-label">📍 台北市</div>
-          <div class="district-tags">
+          <div class="district-city-label" data-city="dc-台北市"><span class="d-arrow">▶</span>📍 台北市</div>
+          <div class="district-tags" id="dc-台北市">
             <span data-name="北投區" class="tag selectable sm">北投區</span><span data-name="士林區" class="tag selectable sm">士林區</span><span data-name="大同區" class="tag selectable sm">大同區</span><span data-name="中山區" class="tag selectable sm">中山區</span><span data-name="松山區" class="tag selectable sm">松山區</span><span data-name="內湖區" class="tag selectable sm">內湖區</span><span data-name="萬華區" class="tag selectable sm">萬華區</span><span data-name="中正區" class="tag selectable sm">中正區</span><span data-name="大安區" class="tag selectable sm">大安區</span><span data-name="信義區" class="tag selectable sm">信義區</span><span data-name="南港區" class="tag selectable sm">南港區</span><span data-name="文山區" class="tag selectable sm">文山區</span>
           </div>
 
-          <div class="district-city-label">📍 新北市</div>
-          <div class="district-tags">
+          <div class="district-city-label" data-city="dc-新北市"><span class="d-arrow">▶</span>📍 新北市</div>
+          <div class="district-tags" id="dc-新北市">
             <span data-name="板橋區" class="tag selectable sm">板橋區</span><span data-name="三重區" class="tag selectable sm">三重區</span><span data-name="中和區" class="tag selectable sm">中和區</span><span data-name="永和區" class="tag selectable sm">永和區</span><span data-name="新莊區" class="tag selectable sm">新莊區</span><span data-name="新店區" class="tag selectable sm">新店區</span><span data-name="土城區" class="tag selectable sm">土城區</span><span data-name="蘆洲區" class="tag selectable sm">蘆洲區</span><span data-name="汐止區" class="tag selectable sm">汐止區</span><span data-name="樹林區" class="tag selectable sm">樹林區</span><span data-name="鶯歌區" class="tag selectable sm">鶯歌區</span><span data-name="三峽區" class="tag selectable sm">三峽區</span><span data-name="淡水區" class="tag selectable sm">淡水區</span><span data-name="瑞芳區" class="tag selectable sm">瑞芳區</span><span data-name="五股區" class="tag selectable sm">五股區</span><span data-name="泰山區" class="tag selectable sm">泰山區</span><span data-name="林口區" class="tag selectable sm">林口區</span><span data-name="深坑區" class="tag selectable sm">深坑區</span><span data-name="石碇區" class="tag selectable sm">石碇區</span><span data-name="坪林區" class="tag selectable sm">坪林區</span><span data-name="三芝區" class="tag selectable sm">三芝區</span><span data-name="石門區" class="tag selectable sm">石門區</span><span data-name="八里區" class="tag selectable sm">八里區</span><span data-name="平溪區" class="tag selectable sm">平溪區</span><span data-name="雙溪區" class="tag selectable sm">雙溪區</span><span data-name="貢寮區" class="tag selectable sm">貢寮區</span><span data-name="金山區" class="tag selectable sm">金山區</span><span data-name="萬里區" class="tag selectable sm">萬里區</span><span data-name="烏來區" class="tag selectable sm">烏來區</span>
           </div>
 
-          <div class="district-city-label">📍 桃園市</div>
-          <div class="district-tags">
+          <div class="district-city-label" data-city="dc-桃園市"><span class="d-arrow">▶</span>📍 桃園市</div>
+          <div class="district-tags" id="dc-桃園市">
             <span data-name="桃園區" class="tag selectable sm">桃園區</span><span data-name="中壢區" class="tag selectable sm">中壢區</span><span data-name="大溪區" class="tag selectable sm">大溪區</span><span data-name="楊梅區" class="tag selectable sm">楊梅區</span><span data-name="蘆竹區" class="tag selectable sm">蘆竹區</span><span data-name="大園區" class="tag selectable sm">大園區</span><span data-name="龜山區" class="tag selectable sm">龜山區</span><span data-name="八德區" class="tag selectable sm">八德區</span><span data-name="龍潭區" class="tag selectable sm">龍潭區</span><span data-name="平鎮區" class="tag selectable sm">平鎮區</span><span data-name="新屋區" class="tag selectable sm">新屋區</span><span data-name="觀音區" class="tag selectable sm">觀音區</span><span data-name="復興區" class="tag selectable sm">復興區</span>
           </div>
 
-          <div class="district-city-label">📍 新竹市</div>
-          <div class="district-tags">
+          <div class="district-city-label" data-city="dc-新竹市"><span class="d-arrow">▶</span>📍 新竹市</div>
+          <div class="district-tags" id="dc-新竹市">
             <span data-name="東區" class="tag selectable sm">東區</span><span data-name="北區" class="tag selectable sm">北區</span><span data-name="香山區" class="tag selectable sm">香山區</span>
           </div>
 
-          <div class="district-city-label">📍 新竹縣</div>
-          <div class="district-tags">
+          <div class="district-city-label" data-city="dc-新竹縣"><span class="d-arrow">▶</span>📍 新竹縣</div>
+          <div class="district-tags" id="dc-新竹縣">
             <span data-name="竹北市" class="tag selectable sm">竹北市</span><span data-name="竹東鎮" class="tag selectable sm">竹東鎮</span><span data-name="新埔鎮" class="tag selectable sm">新埔鎮</span><span data-name="關西鎮" class="tag selectable sm">關西鎮</span><span data-name="湖口鄉" class="tag selectable sm">湖口鄉</span><span data-name="新豐鄉" class="tag selectable sm">新豐鄉</span><span data-name="芎林鄉" class="tag selectable sm">芎林鄉</span><span data-name="橫山鄉" class="tag selectable sm">橫山鄉</span><span data-name="北埔鄉" class="tag selectable sm">北埔鄉</span><span data-name="寶山鄉" class="tag selectable sm">寶山鄉</span><span data-name="峨眉鄉" class="tag selectable sm">峨眉鄉</span><span data-name="尖石鄉" class="tag selectable sm">尖石鄉</span><span data-name="五峰鄉" class="tag selectable sm">五峰鄉</span>
           </div>
 
-          <div class="district-city-label">📍 台中市</div>
-          <div class="district-tags">
+          <div class="district-city-label" data-city="dc-台中市"><span class="d-arrow">▶</span>📍 台中市</div>
+          <div class="district-tags" id="dc-台中市">
             <span data-name="中區(台中)" class="tag selectable sm">中區</span><span data-name="東區(台中)" class="tag selectable sm">東區</span><span data-name="南區(台中)" class="tag selectable sm">南區</span><span data-name="西區(台中)" class="tag selectable sm">西區</span><span data-name="北區(台中)" class="tag selectable sm">北區</span><span data-name="北屯區" class="tag selectable sm">北屯區</span><span data-name="西屯區" class="tag selectable sm">西屯區</span><span data-name="南屯區" class="tag selectable sm">南屯區</span><span data-name="太平區" class="tag selectable sm">太平區</span><span data-name="大里區" class="tag selectable sm">大里區</span><span data-name="霧峰區" class="tag selectable sm">霧峰區</span><span data-name="烏日區" class="tag selectable sm">烏日區</span><span data-name="豐原區" class="tag selectable sm">豐原區</span><span data-name="后里區" class="tag selectable sm">后里區</span><span data-name="石岡區" class="tag selectable sm">石岡區</span><span data-name="東勢區" class="tag selectable sm">東勢區</span><span data-name="新社區" class="tag selectable sm">新社區</span><span data-name="潭子區" class="tag selectable sm">潭子區</span><span data-name="大雅區" class="tag selectable sm">大雅區</span><span data-name="神岡區" class="tag selectable sm">神岡區</span><span data-name="大肚區" class="tag selectable sm">大肚區</span><span data-name="沙鹿區" class="tag selectable sm">沙鹿區</span><span data-name="龍井區" class="tag selectable sm">龍井區</span><span data-name="梧棲區" class="tag selectable sm">梧棲區</span><span data-name="清水區" class="tag selectable sm">清水區</span><span data-name="大甲區" class="tag selectable sm">大甲區</span><span data-name="外埔區" class="tag selectable sm">外埔區</span><span data-name="大安區(台中)" class="tag selectable sm">大安區</span><span data-name="和平區" class="tag selectable sm">和平區</span>
           </div>
 
-          <div class="district-city-label">📍 台南市</div>
-          <div class="district-tags">
+          <div class="district-city-label" data-city="dc-台南市"><span class="d-arrow">▶</span>📍 台南市</div>
+          <div class="district-tags" id="dc-台南市">
             <span data-name="中西區" class="tag selectable sm">中西區</span><span data-name="東區(台南)" class="tag selectable sm">東區</span><span data-name="南區(台南)" class="tag selectable sm">南區</span><span data-name="北區(台南)" class="tag selectable sm">北區</span><span data-name="安平區" class="tag selectable sm">安平區</span><span data-name="安南區" class="tag selectable sm">安南區</span><span data-name="永康區" class="tag selectable sm">永康區</span><span data-name="歸仁區" class="tag selectable sm">歸仁區</span><span data-name="新化區" class="tag selectable sm">新化區</span><span data-name="左鎮區" class="tag selectable sm">左鎮區</span><span data-name="玉井區" class="tag selectable sm">玉井區</span><span data-name="楠西區" class="tag selectable sm">楠西區</span><span data-name="南化區" class="tag selectable sm">南化區</span><span data-name="仁德區" class="tag selectable sm">仁德區</span><span data-name="關廟區" class="tag selectable sm">關廟區</span><span data-name="龍崎區" class="tag selectable sm">龍崎區</span><span data-name="官田區" class="tag selectable sm">官田區</span><span data-name="麻豆區" class="tag selectable sm">麻豆區</span><span data-name="佳里區" class="tag selectable sm">佳里區</span><span data-name="西港區" class="tag selectable sm">西港區</span><span data-name="七股區" class="tag selectable sm">七股區</span><span data-name="將軍區" class="tag selectable sm">將軍區</span><span data-name="學甲區" class="tag selectable sm">學甲區</span><span data-name="北門區" class="tag selectable sm">北門區</span><span data-name="新營區" class="tag selectable sm">新營區</span><span data-name="後壁區" class="tag selectable sm">後壁區</span><span data-name="白河區" class="tag selectable sm">白河區</span><span data-name="東山區" class="tag selectable sm">東山區</span><span data-name="六甲區" class="tag selectable sm">六甲區</span><span data-name="下營區" class="tag selectable sm">下營區</span><span data-name="柳營區" class="tag selectable sm">柳營區</span><span data-name="鹽水區" class="tag selectable sm">鹽水區</span><span data-name="善化區" class="tag selectable sm">善化區</span><span data-name="大內區" class="tag selectable sm">大內區</span><span data-name="山上區" class="tag selectable sm">山上區</span><span data-name="新市區" class="tag selectable sm">新市區</span><span data-name="安定區" class="tag selectable sm">安定區</span>
           </div>
 
-          <div class="district-city-label">📍 高雄市</div>
-          <div class="district-tags">
+          <div class="district-city-label" data-city="dc-高雄市"><span class="d-arrow">▶</span>📍 高雄市</div>
+          <div class="district-tags" id="dc-高雄市">
             <span data-name="楠梓區" class="tag selectable sm">楠梓區</span><span data-name="左營區" class="tag selectable sm">左營區</span><span data-name="鼓山區" class="tag selectable sm">鼓山區</span><span data-name="三民區" class="tag selectable sm">三民區</span><span data-name="苓雅區" class="tag selectable sm">苓雅區</span><span data-name="新興區" class="tag selectable sm">新興區</span><span data-name="前金區" class="tag selectable sm">前金區</span><span data-name="鹽埕區" class="tag selectable sm">鹽埕區</span><span data-name="前鎮區" class="tag selectable sm">前鎮區</span><span data-name="旗津區" class="tag selectable sm">旗津區</span><span data-name="小港區" class="tag selectable sm">小港區</span><span data-name="鳳山區" class="tag selectable sm">鳳山區</span><span data-name="大寮區" class="tag selectable sm">大寮區</span><span data-name="鳥松區" class="tag selectable sm">鳥松區</span><span data-name="林園區" class="tag selectable sm">林園區</span><span data-name="仁武區" class="tag selectable sm">仁武區</span><span data-name="大社區" class="tag selectable sm">大社區</span><span data-name="大樹區" class="tag selectable sm">大樹區</span><span data-name="岡山區" class="tag selectable sm">岡山區</span><span data-name="路竹區" class="tag selectable sm">路竹區</span><span data-name="阿蓮區" class="tag selectable sm">阿蓮區</span><span data-name="田寮區" class="tag selectable sm">田寮區</span><span data-name="燕巢區" class="tag selectable sm">燕巢區</span><span data-name="橋頭區" class="tag selectable sm">橋頭區</span><span data-name="梓官區" class="tag selectable sm">梓官區</span><span data-name="彌陀區" class="tag selectable sm">彌陀區</span><span data-name="永安區" class="tag selectable sm">永安區</span><span data-name="湖內區" class="tag selectable sm">湖內區</span><span data-name="旗山區" class="tag selectable sm">旗山區</span><span data-name="美濃區" class="tag selectable sm">美濃區</span><span data-name="六龜區" class="tag selectable sm">六龜區</span><span data-name="甲仙區" class="tag selectable sm">甲仙區</span><span data-name="內門區" class="tag selectable sm">內門區</span><span data-name="杉林區" class="tag selectable sm">杉林區</span><span data-name="茂林區" class="tag selectable sm">茂林區</span><span data-name="桃源區" class="tag selectable sm">桃源區</span><span data-name="那瑪夏區" class="tag selectable sm">那瑪夏區</span>
           </div>
 
@@ -776,6 +782,165 @@
   本頁為公關測試期間說明文件，實際投放細節以 591 官方確認為準。
 </div>
 
-<script src="app.js"></script>
+<script>
+// ── 素材規格複製 ──
+function copySpecs() {
+  var text = "素材規格\n１．1125 x 2435 像素(頂部預留1125 * 390像素底部預留1125 * 540像素)；\n２．635 x 325 像素\n３．690 x 290 像素\n４．660 x 110 像素(左右各預留45 x 110 像素)\n５．690 x 200像素\n６．1920 x 470 像素\n７．1200 x 90 像素\n８．1200 x 70 像素\n９．1200 x 250 像素\n１０．498 x 498 像素\nJPG/PNG<300K";
+  var btn = document.querySelector('[data-action="copySpecs"]');
+  doCopy(text, btn, '📋 複製素材規格文字');
+}
+
+// ── 展開／收合地區清單 ──
+function toggleArea(listId) {
+  var list = document.getElementById(listId);
+  var arrowId = listId === 'city-list' ? 'city-arrow' : 'district-arrow';
+  var arrow = document.getElementById(arrowId);
+  if (!list || !arrow) return;
+  if (list.classList.contains('open')) {
+    list.classList.remove('open');
+    arrow.classList.remove('open');
+  } else {
+    list.classList.add('open');
+    arrow.classList.add('open');
+  }
+}
+
+// ── 標籤選取 ──
+var selectedTags = [];
+
+function toggleTag(el) {
+  var name = el.getAttribute('data-name');
+  var idx = selectedTags.indexOf(name);
+  if (idx === -1) {
+    selectedTags.push(name);
+    el.style.fontWeight = '700';
+    el.style.outline = '2px solid currentColor';
+    el.style.outlineOffset = '2px';
+  } else {
+    selectedTags.splice(idx, 1);
+    el.style.fontWeight = '';
+    el.style.outline = '';
+    el.style.outlineOffset = '';
+  }
+  updatePreview();
+}
+
+function updatePreview() {
+  var preview = document.getElementById('selectedPreview');
+  var list = document.getElementById('selectedList');
+  if (selectedTags.length === 0) {
+    preview.style.display = 'none';
+  } else {
+    preview.style.display = 'block';
+    list.textContent = selectedTags.join('、');
+  }
+}
+
+function copyTags() {
+  if (selectedTags.length === 0) {
+    alert('請先點選要複製的標籤！');
+    return;
+  }
+  var text = '精準標籤：' + selectedTags.join('、');
+  var btn = document.querySelector('[data-action="copyTags"]');
+  doCopy(text, btn, '📋 複製已選標籤');
+}
+
+function clearTags() {
+  selectedTags = [];
+  document.querySelectorAll('.tag.selectable').forEach(function(el) {
+    el.style.fontWeight = '';
+    el.style.outline = '';
+    el.style.outlineOffset = '';
+  });
+  updatePreview();
+}
+
+// ── 通用複製 ──
+function doCopy(text, btn, originalLabel) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function() {
+      showCopied(btn, originalLabel);
+    }).catch(function() {
+      legacyCopy(text, btn, originalLabel);
+    });
+  } else {
+    legacyCopy(text, btn, originalLabel);
+  }
+}
+
+function legacyCopy(text, btn, originalLabel) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand('copy');
+    showCopied(btn, originalLabel);
+  } catch(e) {
+    alert('複製失敗，請手動複製：\n' + text);
+  }
+  document.body.removeChild(ta);
+}
+
+function showCopied(btn, originalLabel) {
+  if (!btn) return;
+  btn.textContent = '✅ 已複製！';
+  btn.classList.add('copied');
+  setTimeout(function() {
+    btn.textContent = originalLabel;
+    btn.classList.remove('copied');
+  }, 2500);
+}
+
+// ── 綁定所有事件（頁面載入後）──
+window.onload = function() {
+
+  // 展開縣市 / 鄉鎮
+  document.querySelectorAll('.area-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var target = this.getAttribute('data-target');
+      toggleArea(target);
+    });
+  });
+
+  // 展開各城市行政區
+  document.querySelectorAll('.district-city-label').forEach(function(label) {
+    label.addEventListener('click', function() {
+      var cityId = this.getAttribute('data-city');
+      var tags = document.getElementById(cityId);
+      if (!tags) return;
+      if (tags.classList.contains('open')) {
+        tags.classList.remove('open');
+        this.classList.remove('open');
+      } else {
+        tags.classList.add('open');
+        this.classList.add('open');
+      }
+    });
+  });
+
+  // 標籤點選
+  document.querySelectorAll('.tag.selectable').forEach(function(el) {
+    el.addEventListener('click', function() {
+      toggleTag(this);
+    });
+  });
+
+  // 按鈕
+  document.querySelectorAll('[data-action]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var action = this.getAttribute('data-action');
+      if (action === 'copySpecs') copySpecs();
+      if (action === 'copyTags') copyTags();
+      if (action === 'clearTags') clearTags();
+    });
+  });
+
+};
+
+</script>
 </body>
 </html>
