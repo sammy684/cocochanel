@@ -32,6 +32,7 @@
     background: #f0f4ff;
     color: var(--dark);
     line-height: 1.7;
+    -webkit-text-size-adjust: 100%;
   }
 
   /* ── HERO ── */
@@ -84,6 +85,11 @@
     opacity: 0.85;
     margin-bottom: 28px;
   }
+  .hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
 
   .hero-dates {
     display: flex;
@@ -113,8 +119,10 @@
   /* ── SECTION WRAPPER ── */
   .section {
     max-width: 720px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 16px;
+    box-sizing: border-box;
   }
 
   /* ── CARD ── */
@@ -330,29 +338,32 @@
   .compare-table th {
     background: var(--blue);
     color: white;
-    padding: 10px 14px;
-    font-size: 14px;
+    padding: 10px 12px;
+    font-size: 13px;
     font-weight: 700;
     text-align: center;
+    word-break: keep-all;
   }
   .compare-table th:first-child { border-radius: 10px 0 0 0; }
   .compare-table th:last-child { border-radius: 0 10px 0 0; }
   .compare-table td {
-    padding: 10px 14px;
+    padding: 10px 12px;
     font-size: 13px;
     border-bottom: 1px solid var(--border);
-    vertical-align: top;
+    vertical-align: middle;
+    word-break: keep-all;
+    line-height: 1.6;
   }
   .compare-table tr:last-child td { border-bottom: none; }
   .compare-table td:first-child {
     font-weight: 600;
     color: var(--blue);
-    width: 80px;
     background: var(--blue-light);
   }
   .compare-table td:nth-child(2) {
     background: #fff;
     color: var(--dark);
+    text-align: center;
   }
 
   /* ── FOOTER ── */
@@ -410,28 +421,17 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">🎯 591 功能測試招商 · 歡迎體驗</div>
-  <h1>精準定向包<br><span>公關版位招商</span></h1>
+  
+  <h1>精準定向包<br><span>滿額贈</span></h1>
   <p class="hero-sub">從「人找房」進化為「房找人」<br>讓廣告主動找到最適合的潛在買家</p>
 
-  <div class="hero-dates">
-    <div class="date-card">
-      <div class="label">📋 同意書回覆</div>
-      <div class="date">5/15（五）</div>
-    </div>
-    <div class="date-card">
-      <div class="label">🖼 素材繳交</div>
-      <div class="date">5/20（三）</div>
-    </div>
-    <div class="date-card">
-      <div class="label">🚀 投放期間</div>
-      <div class="date">5/25 – 6/23</div>
-    </div>
   </div>
 </div>
 
+</div>
+
 <!-- CONTENT -->
-<div class="section">
+<div class="section" style="padding-top:4px;">
 
   <!-- 什麼是精準版位 -->
   <div class="card">
@@ -449,7 +449,7 @@
     <table class="compare-table" style="margin-top:16px;">
       <tr>
         <th>項目</th>
-        <th>⚡ 精準版位（本次測試）</th>
+        <th>精準版位 產品說明</th>
       </tr>
       <tr>
         <td>曝光位置</td>
@@ -474,106 +474,117 @@
     </table>
   </div>
 
-  <!-- 參加流程 -->
+  <!-- 贈送門檻 -->
   <div class="card">
     <div class="card-title">
-      <div class="icon icon-orange">📅</div>
-      參加流程 &amp; 重要時間節點
+      <div class="icon icon-orange">🎁</div>
+      贈送門檻
     </div>
 
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-body">
-          <div class="step-title">確認參加意願</div>
-          <div class="step-date">⏰ 截止 5/15（五）</div>
-          <div class="step-desc">確認參加，業務會 E-mail 公關同意書給您，請在信件回覆<strong>「同意」</strong>，並<strong>「回覆所有人」</strong>，勿單獨回覆。</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-body">
-          <div class="step-title">準備並繳交素材</div>
-          <div class="step-date">⏰ 截止 5/20（三）</div>
-          <div class="step-desc">共需準備 <strong>10 組素材</strong>，規格詳見下方說明。格式 JPG / PNG，每檔 &lt; 300K。</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-body">
-          <div class="step-title">591 上線投放</div>
-          <div class="step-date">📆 2026/5/25 – 6/23</div>
-          <div class="step-desc">交付週期約 <strong>30 天</strong>。實際以 591 交付時間為準，可能有所調整。</div>
-        </div>
-      </div>
+    <div class="highlight highlight-green">
+      <div class="hi-icon">📢</div>
+      <div class="hi-text"><strong>金額累計、贈送週數累計</strong>｜消費越多、贈送越多，最多贈送 4 週！</div>
     </div>
 
-    <div class="highlight highlight-red">
-      <div class="hi-icon">⚠️</div>
-      <div class="hi-text"><strong>特別提醒：</strong>同意書須在 5/15 前回覆，逾期視同放棄本次公關資格。</div>
-    </div>
+    <table class="compare-table" style="margin-top:16px;">
+      <tr>
+        <th style="width:58%">投放縣市</th>
+        <th>單月委刊門檻（含稅）</th>
+      </tr>
+      <tr>
+        <td>台北市、桃園市</td>
+        <td>每滿 <strong>8 萬</strong>，贈 1 週</td>
+      </tr>
+      <tr>
+        <td>新北市</td>
+        <td>每滿 <strong>12 萬</strong>，贈 1 週</td>
+      </tr>
+      <tr>
+        <td>台中市、新竹縣市、高雄市、苗栗縣、基隆市</td>
+        <td>每滿 <strong>5 萬</strong>，贈 1 週</td>
+      </tr>
+      <tr>
+        <td>台南市、彰化縣</td>
+        <td>每滿 <strong>2 萬</strong>，贈 1 週</td>
+      </tr>
+      <tr>
+        <td>南投縣、雲林縣、屏東縣、嘉義縣市、宜蘭縣、花蓮縣、台東縣</td>
+        <td>每滿 <strong>1 萬</strong>，贈 1 週</td>
+      </tr>
+    </table>
   </div>
+      
 
   <!-- 素材規格 -->
   <div class="card">
     <div class="card-title">
       <div class="icon icon-blue">🖼</div>
-      素材規格（共 10 組）
+      素材規格
     </div>
 
     <div class="spec-grid">
       <div class="spec-item">
-        <div class="spec-label">版位 1（手機全版）</div>
+        <div class="spec-label">尺寸 1</div>
         <div class="spec-val">1125 × 2435 px</div>
       </div>
       <div class="spec-item">
-        <div class="spec-label">版位 2</div>
-        <div class="spec-val">635 × 325 px</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">版位 3</div>
-        <div class="spec-val">690 × 290 px</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">版位 4（橫幅）</div>
-        <div class="spec-val">660 × 110 px</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">版位 5</div>
-        <div class="spec-val">690 × 200 px</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">版位 6（電腦大圖）</div>
+        <div class="spec-label">尺寸 2</div>
         <div class="spec-val">1920 × 470 px</div>
       </div>
       <div class="spec-item">
-        <div class="spec-label">版位 7</div>
-        <div class="spec-val">1200 × 90 px</div>
+        <div class="spec-label">尺寸 3</div>
+        <div class="spec-val">635 × 325 px</div>
       </div>
       <div class="spec-item">
-        <div class="spec-label">版位 8</div>
+        <div class="spec-label">尺寸 4</div>
+        <div class="spec-val">690 × 290 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">尺寸 5（橫幅）</div>
+        <div class="spec-val">660 × 110 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">尺寸 6（方形）</div>
+        <div class="spec-val">498 × 498 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">尺寸 7</div>
         <div class="spec-val">1200 × 70 px</div>
       </div>
       <div class="spec-item">
-        <div class="spec-label">版位 9</div>
+        <div class="spec-label">尺寸 8</div>
         <div class="spec-val">1200 × 250 px</div>
       </div>
       <div class="spec-item">
-        <div class="spec-label">版位 10（方形）</div>
-        <div class="spec-val">498 × 498 px</div>
+        <div class="spec-label">尺寸 9</div>
+        <div class="spec-val">498 × 234 px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">尺寸 10</div>
+        <div class="spec-val">1200 × 90 px</div>
+      </div>
+      <div class="spec-item full">
+        <div class="spec-label">尺寸 11</div>
+        <div class="spec-val">690 × 200 px</div>
       </div>
     </div>
 
     <div class="spec-note">
-      📎 格式：JPG 或 PNG｜每個檔案 &lt; 300K<br>
-      📌 版位1 注意：頂部保留 1125×390 px、底部保留 1125×540 px 安全區域<br>
-      📌 版位4 注意：左右各保留 45×110 px 安全區域
+      📌 尺寸 1 安全區域：頂部 1125×390 px、底部 1125×540 px<br>
+      📌 尺寸 5 安全區域：左右各預留 45×110 px<br>
+      📎 格式：JPG / PNG｜每檔 &lt; 300K｜輪替：無限輪替<br>
+      📍 投放縣市區別：按鎖定縣市投放｜可跨區投放：是<br>
+      📋 展示規則：依照鎖定標籤，針對符合標籤之用戶投放（非無差別曝光）；無法指定版位，站內閒置版位曝光
     </div>
 
-    <button class="copy-btn" id="specBtn" data-action="copySpecs" id="copyBtn">
+    <a href="https://drive.google.com/drive/folders/1Hzly6KSuqXlMLAXOVK4TL9Dpl20zNSBa" target="_blank" class="copy-btn" style="display:block; text-align:center; text-decoration:none; margin-bottom:10px; background:#27ae60;">
+      🖼 點我查看素材示意圖
+    </a>
+    <button class="copy-btn" data-action="copySpecs" id="copyBtn">
       📋 複製素材規格文字
     </button>
   </div>
+      
 
   <!-- 可選標籤 -->
   <div class="card">
@@ -665,20 +676,20 @@
     <div class="tag-section">
       <div class="tag-section-title">💰 總價（非台北市）</div>
       <div class="tags">
-        <span data-name="1000萬以下" class="tag selectable orange">1000萬以下</span>
-        <span data-name="1000–1500萬" class="tag selectable orange">1000–1500萬</span>
-        <span data-name="1500–2500萬" class="tag selectable orange">1500–2500萬</span>
-        <span data-name="2500萬以上" class="tag selectable orange">2500萬以上</span>
+        <span data-name="非台北市-1000萬以下" class="tag selectable orange">1000萬以下</span>
+        <span data-name="非台北市-1000–1500萬" class="tag selectable orange">1000–1500萬</span>
+        <span data-name="非台北市-1500–2500萬" class="tag selectable orange">1500–2500萬</span>
+        <span data-name="非台北市-2500萬以上" class="tag selectable orange">2500萬以上</span>
       </div>
     </div>
 
     <div class="tag-section">
       <div class="tag-section-title">💰 總價（台北市）</div>
       <div class="tags">
-        <span data-name="2000萬以下" class="tag selectable orange">2000萬以下</span>
-        <span data-name="2000–3000萬" class="tag selectable orange">2000–3000萬</span>
-        <span data-name="3000–4000萬" class="tag selectable orange">3000–4000萬</span>
-        <span data-name="4000萬以上" class="tag selectable orange">4000萬以上</span>
+        <span data-name="台北市-2000萬以下" class="tag selectable orange">2000萬以下</span>
+        <span data-name="台北市-2000–3000萬" class="tag selectable orange">2000–3000萬</span>
+        <span data-name="台北市-3000–4000萬" class="tag selectable orange">3000–4000萬</span>
+        <span data-name="台北市-4000萬以上" class="tag selectable orange">4000萬以上</span>
       </div>
     </div>
 
@@ -740,42 +751,9 @@
       </button>
     </div>
   </div>
-
-  <!-- 重點整理 -->
-  <div class="card">
-    <div class="card-title">
-      <div class="icon icon-orange">📌</div>
-      重點整理
-    </div>
-    <div class="highlight highlight-blue">
-      <div class="hi-icon">1️⃣</div>
-      <div class="hi-text"><strong>5/15 前</strong>回覆「同意」信件參加</div>
-    </div>
-    <div class="highlight highlight-orange">
-      <div class="hi-icon">2️⃣</div>
-      <div class="hi-text"><strong>5/20 前</strong>準備好 10 組素材（JPG/PNG &lt; 300K）</div>
-    </div>
-    <div class="highlight highlight-green">
-      <div class="hi-icon">3️⃣</div>
-      <div class="hi-text"><strong>5/25 起</strong>廣告上線，投放約 30 天</div>
-    </div>
-    <div class="highlight highlight-blue">
-      <div class="hi-icon">4️⃣</div>
-      <div class="hi-text">選定<strong>精準標籤</strong>，讓廣告找到最有意願的買家</div>
-    </div>
   </div>
 
 </div><!-- end section -->
-
-<div class="section">
-  <div class="card" style="text-align:center; padding: 20px 16px;">
-    <div class="card-title" style="justify-content:center;">
-      <div class="icon icon-blue">📄</div>
-      產品說明 DM
-    </div>
-    <img src="dm.jpg" alt="591 精準廣告 DM" style="width:100%; max-width:480px; border-radius:12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12);">
-  </div>
-</div>
 
 <div class="footer">
   <strong>591 廣告 · 就是比較準！</strong><br>
@@ -785,7 +763,7 @@
 <script>
 // ── 素材規格複製 ──
 function copySpecs() {
-  var text = "素材規格\n１．1125 x 2435 像素(頂部預留1125 * 390像素底部預留1125 * 540像素)；\n２．635 x 325 像素\n３．690 x 290 像素\n４．660 x 110 像素(左右各預留45 x 110 像素)\n５．690 x 200像素\n６．1920 x 470 像素\n７．1200 x 90 像素\n８．1200 x 70 像素\n９．1200 x 250 像素\n１０．498 x 498 像素\nJPG/PNG<300K";
+  var text = "素材規格\n1. 1125 x 2435 px（頂部預留1125×390px、底部預留1125×540px）\n2. 1920 x 470 px\n3. 635 x 325 px\n4. 690 x 290 px\n5. 660 x 110 px（左右各預留45×110px）\n6. 498 x 498 px\n7. 1200 x 70 px\n8. 1200 x 250 px\n9. 498 x 234 px\n10. 1200 x 90 px\n11. 690 x 200 px\n格式：JPG/PNG < 300K｜輪替：無限輪替\n投放縣市區別：按鎖定縣市投放｜可跨區：是\n展示規則：依標籤投放，非無差別曝光；無法指定版位，站內閒置版位曝光";
   var btn = document.querySelector('[data-action="copySpecs"]');
   doCopy(text, btn, '📋 複製素材規格文字');
 }
