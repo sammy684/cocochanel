@@ -387,6 +387,34 @@
     text-transform: uppercase;
   }
 
+  /* ── THRESHOLD LIST ── */
+  .threshold-list { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .threshold-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--light);
+    border-radius: 12px;
+    padding: 12px 16px;
+    gap: 12px;
+    border-left: 4px solid var(--blue);
+  }
+  .threshold-city {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blue);
+    flex: 1;
+    line-height: 1.5;
+  }
+  .threshold-amount {
+    font-size: 14px;
+    color: var(--dark);
+    white-space: nowrap;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .threshold-amount strong { color: var(--red); }
+
   .copy-btn {
     display: block;
     width: 100%;
@@ -486,32 +514,28 @@
       <div class="hi-text"><strong>金額累計、贈送週數累計</strong>｜消費越多、贈送越多，最多贈送 4 週！</div>
     </div>
 
-    <table class="compare-table" style="margin-top:16px;">
-      <tr>
-        <th style="width:58%">投放縣市</th>
-        <th>單月委刊門檻（含稅）</th>
-      </tr>
-      <tr>
-        <td>台北市、桃園市</td>
-        <td>每滿 <strong>8 萬</strong>，贈 1 週</td>
-      </tr>
-      <tr>
-        <td>新北市</td>
-        <td>每滿 <strong>12 萬</strong>，贈 1 週</td>
-      </tr>
-      <tr>
-        <td>台中市、新竹縣市、高雄市、苗栗縣、基隆市</td>
-        <td>每滿 <strong>5 萬</strong>，贈 1 週</td>
-      </tr>
-      <tr>
-        <td>台南市、彰化縣</td>
-        <td>每滿 <strong>2 萬</strong>，贈 1 週</td>
-      </tr>
-      <tr>
-        <td>南投縣、雲林縣、屏東縣、嘉義縣市、宜蘭縣、花蓮縣、台東縣</td>
-        <td>每滿 <strong>1 萬</strong>，贈 1 週</td>
-      </tr>
-    </table>
+    <div class="threshold-list">
+      <div class="threshold-item">
+        <div class="threshold-city">台北市、桃園市</div>
+        <div class="threshold-amount">每滿 <strong>8 萬</strong>，贈 1 週</div>
+      </div>
+      <div class="threshold-item">
+        <div class="threshold-city">新北市</div>
+        <div class="threshold-amount">每滿 <strong>12 萬</strong>，贈 1 週</div>
+      </div>
+      <div class="threshold-item">
+        <div class="threshold-city">台中市、新竹縣市、高雄市、苗栗縣、基隆市</div>
+        <div class="threshold-amount">每滿 <strong>5 萬</strong>，贈 1 週</div>
+      </div>
+      <div class="threshold-item">
+        <div class="threshold-city">台南市、彰化縣</div>
+        <div class="threshold-amount">每滿 <strong>2 萬</strong>，贈 1 週</div>
+      </div>
+      <div class="threshold-item">
+        <div class="threshold-city">南投縣、雲林縣、屏東縣、嘉義縣市、宜蘭縣、花蓮縣、台東縣</div>
+        <div class="threshold-amount">每滿 <strong>1 萬</strong>，贈 1 週</div>
+      </div>
+    </div>
   </div>
       
 
