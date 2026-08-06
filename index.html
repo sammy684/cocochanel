@@ -283,15 +283,16 @@
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
   }
   .tag {
     background: var(--blue-light);
     color: var(--blue);
     border-radius: 100px;
-    padding: 5px 14px;
+    padding: 6px 16px;
     font-size: 13px;
     font-weight: 500;
+    display: inline-block;
   }
   .tag.orange { background: var(--orange-light); color: #b35900; }
   .tag.sm { padding: 4px 10px; font-size: 12px; }
@@ -311,6 +312,7 @@
   .area-arrow.open { transform: rotate(90deg); }
   .area-hint { margin-left: auto; font-size: 11px; color: var(--gray); font-weight: 400; }
   .area-list { display: none; padding: 14px; border-top: 1px solid var(--border); }
+  .area-list .tags { gap: 10px; padding: 2px; }
   .area-list.open { display: block; }
   .district-city-label {
     font-size: 13px; font-weight: 700; color: var(--blue);
@@ -597,28 +599,30 @@
           <span class="area-hint">點擊展開</span>
         </div>
         <div class="area-list" id="city-list">
-          <span data-name="台北市" class="tag selectable">台北市</span>
-          <span data-name="新北市" class="tag selectable">新北市</span>
-          <span data-name="基隆市" class="tag selectable">基隆市</span>
-          <span data-name="桃園市" class="tag selectable">桃園市</span>
-          <span data-name="新竹市" class="tag selectable">新竹市</span>
-          <span data-name="新竹縣" class="tag selectable">新竹縣</span>
-          <span data-name="苗栗縣" class="tag selectable">苗栗縣</span>
-          <span data-name="台中市" class="tag selectable">台中市</span>
-          <span data-name="彰化縣" class="tag selectable">彰化縣</span>
-          <span data-name="南投縣" class="tag selectable">南投縣</span>
-          <span data-name="雲林縣" class="tag selectable">雲林縣</span>
-          <span data-name="嘉義市" class="tag selectable">嘉義市</span>
-          <span data-name="嘉義縣" class="tag selectable">嘉義縣</span>
-          <span data-name="台南市" class="tag selectable">台南市</span>
-          <span data-name="高雄市" class="tag selectable">高雄市</span>
-          <span data-name="屏東縣" class="tag selectable">屏東縣</span>
-          <span data-name="宜蘭縣" class="tag selectable">宜蘭縣</span>
-          <span data-name="花蓮縣" class="tag selectable">花蓮縣</span>
-          <span data-name="台東縣" class="tag selectable">台東縣</span>
-          <span data-name="澎湖縣" class="tag selectable">澎湖縣</span>
-          <span data-name="金門縣" class="tag selectable">金門縣</span>
-          <span data-name="連江縣" class="tag selectable">連江縣</span>
+          <div class="tags" style="gap:10px; padding:4px 2px;">
+            <span data-name="台北市" class="tag selectable">台北市</span>
+            <span data-name="新北市" class="tag selectable">新北市</span>
+            <span data-name="基隆市" class="tag selectable">基隆市</span>
+            <span data-name="桃園市" class="tag selectable">桃園市</span>
+            <span data-name="新竹市" class="tag selectable">新竹市</span>
+            <span data-name="新竹縣" class="tag selectable">新竹縣</span>
+            <span data-name="苗栗縣" class="tag selectable">苗栗縣</span>
+            <span data-name="台中市" class="tag selectable">台中市</span>
+            <span data-name="彰化縣" class="tag selectable">彰化縣</span>
+            <span data-name="南投縣" class="tag selectable">南投縣</span>
+            <span data-name="雲林縣" class="tag selectable">雲林縣</span>
+            <span data-name="嘉義市" class="tag selectable">嘉義市</span>
+            <span data-name="嘉義縣" class="tag selectable">嘉義縣</span>
+            <span data-name="台南市" class="tag selectable">台南市</span>
+            <span data-name="高雄市" class="tag selectable">高雄市</span>
+            <span data-name="屏東縣" class="tag selectable">屏東縣</span>
+            <span data-name="宜蘭縣" class="tag selectable">宜蘭縣</span>
+            <span data-name="花蓮縣" class="tag selectable">花蓮縣</span>
+            <span data-name="台東縣" class="tag selectable">台東縣</span>
+            <span data-name="澎湖縣" class="tag selectable">澎湖縣</span>
+            <span data-name="金門縣" class="tag selectable">金門縣</span>
+            <span data-name="連江縣" class="tag selectable">連江縣</span>
+          </div>
         </div>
       </div>
 
@@ -729,7 +733,7 @@
       <div class="tag-section-title">🏗 形態</div>
       <div class="tags">
         <span data-name="住宅大樓" class="tag selectable">住宅大樓</span>
-        <span data-name="電梯大樓" class="tag selectable">電梯大樓</span>
+        <span data-name="電梯公寓" class="tag selectable">電梯公寓</span>
         <span data-name="華廈" class="tag selectable">華廈</span>
         <span data-name="別墅" class="tag selectable">別墅</span>
         <span data-name="透天" class="tag selectable">透天</span>
